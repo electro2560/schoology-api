@@ -79,6 +79,8 @@ public interface ISchoologyRequestHandler
 	
 	public SchoologyBuilding getBuilding(String building_id);
 	
+	public SchoologyUpdate getUpdate(SchoologyRealm realm, String realm_id, String update_id);
+	
 	public SchoologyUpdatesPage getUpdates(String realm);
 	
 	default public SchoologyUpdatesPage getRecentUpdates()

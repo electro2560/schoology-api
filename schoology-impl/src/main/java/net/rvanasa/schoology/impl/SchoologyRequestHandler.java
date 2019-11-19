@@ -317,6 +317,14 @@ public class SchoologyRequestHandler implements ISchoologyRequestHandler
 	}
 	
 	@Override
+	public SchoologyUpdate getUpdate(SchoologyRealm realm, String realm_id, String update_id)
+	{
+		SchoologyResponse response = get(realm + realm_id + "/updates/" + update_id).requireSuccess();
+		
+		return gson.fromJson(response.getBody().parse().asRawData(), SchoologyUpdate.class).reference(this);
+	}
+	
+	@Override
 	public SchoologyUpdatesPage getUpdates(String realm)
 	{
 		if(!realm.equalsIgnoreCase("recent")) realm += "/updates";
